@@ -1,0 +1,74 @@
+<!doctype>
+<html>
+<head>
+    <style>
+  
+.signup{
+    text-align: center;
+    color: #2e8b57;
+}
+.error { 
+    color: 	#f08080; 
+}
+.inputbox{
+    margin-left: 350px;
+    margin-right: 350px;
+    border: 3px solid #2e8b57;
+    border-radius: 20px;
+    background-image: url(static/paw-print.jpg);
+}
+.input{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+.submit{
+    margin-top: 10px;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <div class="signup">    
+        <h1>Sign up</h1>
+    </div>
+    <div class="inputbox">    
+        <form method="POST">
+            <div class="input">
+            <label class="label">Username: 
+                <input name="username" type="text" value="{{username}}" />
+            </label>
+            <span class="error">
+                {{name_error}}
+            </span>
+            </div>
+            <div class="input"> 
+            <label class="label">Password:
+                <input name="password" type="password" value="{{password}}" />
+            </label>
+            <span class="error">
+                {{pass_error}}
+            </span>
+            </div>
+            <div class="input">
+            <label class="label">Verify Password:
+                <input name="password2" type="password" value ="{{password2}}" />
+            </label>
+                <span class="error">
+                    {{pass_error2}}
+                </span>
+            </div>
+            <div class="input">
+            <labe class="label"l>Email (optional):
+                <input name="email" type="text" value="{{email}}" />
+            </label>
+                <span class="error">
+                    {{email_error}} 
+                </span>
+            </div>
+            <div class="submit">    
+                <input type="submit" value="Submit"/>
+            </div>    
+        </form>
+    </div>             
+    </body>
+</html>
