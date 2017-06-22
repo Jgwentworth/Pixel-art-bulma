@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}    
+    
+<div class="signup">    
+    <h1>Sign up</h1>
+</div>
+
+ <form>
+  <div class="input-group form-group-lg col-lg-4">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="username" type="text" class="form-control" name="username" placeholder="Username" value="{{username}}" />
+  </div>
+  {{name_error}}
+  <div class="input-group form-group-lg col-lg-4">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password" placeholder="Password" value="{{password}}" />
+  </div>
+  {{pass_error}}
+  <div class="input-group form-group-lg col-lg-4">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password2" placeholder="Confirm Password" value="{{password2}}" />
+  </div>
+  {{pass_error2}}
+  <div class="input-group form-group-lg col-lg-4">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input id="email" type="text" class="form-control" name="email" placeholder="Email" value="{{email}}" />
+  </div>
+  {{email_error}}
+  <input class="btn btn-outline-success" type="submit" value="Submit"> 
+</form>    
+  
+{% endblock %}    
