@@ -1,21 +1,26 @@
 .navbar{
     margin-bottom: 0px;
     border: 0;
-    background: #b0c4de;
+    background: black;
 }
-.navbar-brand{
-    color: black;
 
+.navbar-brand {
+    color: black;
 }
+
+.signup{
+    position: center;
+}
+
 .container-fluid{
-    margin-top: 30px;
+    margin-top: 25px;
 }
 .navbar-inverse .navbar-nav li a {
 	color: black;
 	font-size: 16px;
 }
 .navbar-inverse .navbar-nav li a:hover {
-	background: #008b8b;
+	background: #696969;
 }
 .carosusel img{
      width: auto;
@@ -24,10 +29,10 @@
   overflow: hidden;
 
 }
-.jumbotron{
-    background: #7fffd4;
-}
-.item {
-  width: 100%;
+.carousel-inner > .item > img, 
+.carousel-inner > .item > a > img{
+width: 65%; /* use this, or not */
+height:500px;
+margin: auto;
 }
 
