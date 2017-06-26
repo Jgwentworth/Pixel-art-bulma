@@ -93,5 +93,12 @@ def validate_response():
             pass_error2 = pass_error2,
             email_error = email_error
     )             
+@app.route("/search")
+def search_page():
+    return render_template("search.html")
+
+@app.route("/post")
+def post_page():
+    return render_template("post.html")    
 
 app.run()    

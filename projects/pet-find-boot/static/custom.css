@@ -4,11 +4,7 @@
     background: black;
 }
 
-.navbar-brand {
-    color: black;
-}
-
-.signup{
+.sign-in{
     position: center;
 }
 
@@ -16,7 +12,6 @@
     margin-top: 25px;
 }
 .navbar-inverse .navbar-nav li a {
-	color: black;
 	font-size: 16px;
 }
 .navbar-inverse .navbar-nav li a:hover {
@@ -34,5 +29,17 @@
 width: 65%; /* use this, or not */
 height:500px;
 margin: auto;
+}
+.sidenav {
+      padding-top: 30px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      background-color: #555;
+      height: auto;
+}
+footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
 }
 
