@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block content %} 
 
 <div class="container-fluid text-center">
- <form class ="sign-in" method="POST">
-  <h3>Don't have an account yet? <a href="sign-up">Sign up here</a></h3>   
+ <form class ="sign-up" method="POST">
+  <h3>Already have an account? <a href="sign-in"> Sign in</a></h3>   
   <h1>Sign up</h1>
   <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -24,8 +24,27 @@
   {{pass_error}}
   </div>
   </div>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="password" type="password" class="form-control" name="password2" placeholder="Confirm Password" value="{{password2}}" />
+  </div>
+  {{pass_error2}}
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <div class="input-group">  
+    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input id="email" type="text" class="form-control" name="email" placeholder="Email" value="{{email}}" />
+  </div>
+  {{email_error}}
+  </div>
+  </div>
   <input class="btn btn-outline-success" type="submit" value="Submit"> 
 </form>
 </div>   
 
-{% endblock %}  
+
+{% endblock %}    

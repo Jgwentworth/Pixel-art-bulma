@@ -1,11 +1,10 @@
 .navbar{
     margin-bottom: 0px;
     border: 0;
-    background: black;
 }
 
-.sign-in{
-    position: center;
+.dropdown-menu{
+    color: 	#fff5ee;
 }
 
 .container-fluid{
@@ -15,7 +14,7 @@
 	font-size: 16px;
 }
 .navbar-inverse .navbar-nav li a:hover {
-	background: #696969;
+	background: #48d1cc;
 }
 .carosusel img{
      width: auto;
@@ -26,7 +25,7 @@
 }
 .carousel-inner > .item > img, 
 .carousel-inner > .item > a > img{
-width: 65%; /* use this, or not */
+width: 65%;
 height:500px;
 margin: auto;
 }
