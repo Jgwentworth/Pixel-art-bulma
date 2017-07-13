@@ -3,6 +3,7 @@ from model import User, Post
 from hashutils import check_pw_hash
 from app import app, db
 import cgi
+import string
 app.secret_key = "acubycoarvpv"
 
 def is_blank(resp):
@@ -47,7 +48,7 @@ def sign_up():
 
         not_valid ="Not valid (Between 3-20 characters and no whitespace)" 
 
-        existing_user = User.query.filter_by(username=username).first()
+        existing_user = User.query.filter_by(username=username).count()
 
         name_error = ''
         pass_error = ''
@@ -57,7 +58,7 @@ def sign_up():
         if is_blank(username):
             name_error = "Empty field"
         else:
-            if username == existing_user:
+            if existing_user > 0:
                 name_error = "Username already in use."
                 username = ""
             elif not is_valid(username):
