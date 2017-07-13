@@ -49,6 +49,7 @@ def sign_up():
         not_valid ="Not valid (Between 3-20 characters and no whitespace)" 
 
         existing_user = User.query.filter_by(username=username).count()
+        existing_email = User.query.filter_by(email=email).count()
 
         name_error = ''
         pass_error = ''
@@ -79,7 +80,13 @@ def sign_up():
             elif password != password2:
                 pass_error2 = "Not matching"
                 password2 = ""
-        if not valid_email(email):
+        if is_blank(email):
+            email_error = "Empty Field"
+        else:
+            if existing_email > 0:
+                email_error = "Email already in use."
+                email = ""
+            elif not valid_email(email):
                 email_error = "Not valid email"
                 email = ""        
         if not name_error and not pass_error and not pass_error2 and not email_error:
@@ -101,7 +108,7 @@ def sign_up():
         ) 
     return render_template("sign-up.html")
 
-@app.route("/sign-in")
+@app.route("/sign-in", methods=["POST","GET"])
 def sign_in():
     if request.method == "GET":
         return render_template("sign-in.html")    
@@ -119,7 +126,7 @@ def sign_in():
             username = ""
             password = ''
             return render_template("sign-in.html",
-                            name_error = name-error,
+                            name_error = name_error,
                             pass_error = pass_error,
                             username = username,
                             password = password
