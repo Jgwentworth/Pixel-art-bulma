@@ -45,16 +45,19 @@ def sign_up():
         password = request.form["password"]
         password2 = request.form["password2"]
         email = request.form["email"]
+        number = request.form['number']
+        number = ''.join(n for n in number if n.isdigit())
 
         not_valid ="Not valid (Between 3-20 characters and no whitespace)" 
 
         existing_user = User.query.filter_by(username=username).count()
         existing_email = User.query.filter_by(email=email).count()
-
+        
         name_error = ''
         pass_error = ''
         pass_error2 = ''
         email_error = ''
+        num_error = ''
 
         if is_blank(username):
             name_error = "Empty field"
@@ -88,23 +91,27 @@ def sign_up():
                 email = ""
             elif not valid_email(email):
                 email_error = "Not valid email"
-                email = ""        
-        if not name_error and not pass_error and not pass_error2 and not email_error:
-            user_id = User(username, email, password)
+                email = ""
+        if is_blank(number):
+            num_error = "Empty Field"                
+        if not name_error and not pass_error and not pass_error2 and not email_error and not num_error:
+            user_id = User(username, password, email, number)
             db.session.add(user_id)
             db.session.commit()
             session['username'] = username
             return redirect("/")
         else:
             return render_template("sign-up.html",
-                username = username,
-                password = password,
-                password2 = password2,
-                email = email,
-                name_error = name_error,
-                pass_error = pass_error,
-                pass_error2 = pass_error2,
-                email_error = email_error
+                                   username = username,
+                                   password=password,
+                                   password2=password2,
+                                   email=email,
+                                   name_error=name_error,
+                                   pass_error=pass_error,
+                                   pass_error2=pass_error2,
+                                   email_error=email_error,
+                                   number=number,
+                                   num_error=num_error
         ) 
     return render_template("sign-up.html")
 
@@ -116,22 +123,25 @@ def sign_in():
         username = request.form['username']
         password = request.form["password"]
         user = User.query.filter_by(username=username).first()
+
+        name_error = ""
+        pass_error = ""
+
+        if not user:
+            name_error = "Incorrect Username"
+            username = ''
         if user and check_pw_hash(password, user.pw_hash):
             session["username"] = username
             return redirect('/')
         else:
-            # TODO - Need to fix error checks so that they are individual
-            name_error = "Incorrect username or password"
-            pass_error = "Incorrect username or password"
-            username = ""
-            password = ''
+            pass_error = "Incorrect Password"
+            password = ""
             return render_template("sign-in.html",
-                            name_error = name_error,
-                            pass_error = pass_error,
-                            username = username,
-                            password = password
-        )
-
+                                   name_error=name_error,
+                                   pass_error=pass_error,
+                                   username=username,
+                                   password=password
+                                  )
 
 @app.route("/search")
 def search_page():
@@ -139,6 +149,13 @@ def search_page():
 
 @app.route("/post")
 def post_page():
+    if request.method == "POST":
+        species = request.form["species"]
+        breed = request.form["breed"]
+        color = request.form["color"]
+        size = request.form["size"]
+        name = request.form["name"]
+
     return render_template("post.html")    
 
 if __name__ == "__main__" :

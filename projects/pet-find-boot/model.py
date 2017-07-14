@@ -5,15 +5,17 @@ from hashutils import make_pw_hash
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120))
-    email = db.Column(db.String(120))
     pw_hash = db.Column(db.String(255))
+    email = db.Column(db.String(120))
+    number = db.Column(db.String(12))
     posts = db.relationship("Post", backref="owner")
     
 
-    def __init__(self, username, email, password):
+    def __init__(self, username, password, email, number):
         self.username = username
-        self.email = email
         self.pw_hash = make_pw_hash(password)
+        self.email = email
+        self.number = number
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
