@@ -2,27 +2,28 @@
 
 {% block content %}
 
+<div id="post" class="container">
  <div class="row">
   <div class="col-md-6 col-md-offset-3">
-<form class="specific-search" method="POST">
+<form class="post" method="POST">
     <div class="input-group">
     <span class="input-group-addon">Species</span>
-    <input id="msg" type="text" class="form-control" name="msg" placeholder="Dog">
+    <input id="msg" type="text" class="form-control" name="msg" placeholder="Dog" value="{{species_error}}">
   </div>
   <br>
   <div class="input-group">
     <span class="input-group-addon">Breed</span>
-    <input id="msg" type="text" class="form-control" name="msg" placeholder="German Shepard">
+    <input id="msg" type="text" class="form-control" name="msg" placeholder="German Shepard" value="{{breed_error}}">
   </div>
   <br>
   <div class="input-group">
     <span class="input-group-addon">Color</span>
-    <input id="msg" type="text" class="form-control" name="msg" placeholder="Black and tan">
+    <input id="msg" type="text" class="form-control" name="msg" placeholder="Black and tan" value="{{color_error}}">
   </div>
   <br>
   <div class="input-group">
     <span class="input-group-addon">Size</span>
-    <input id="msg" type="text" class="form-control" name="msg" placeholder="100 lbs">
+    <input id="msg" type="text" class="form-control" name="msg" placeholder="100 lbs" value="{{size_error}}">
   </div>
   <br>
   <div class="input-group">
@@ -33,5 +34,6 @@
 <button type="button" class="btn btn-primary btn-lg">Submit</button>  
 </form>  
   </div>
+</div>
 </div>  
 {% endblock %}  

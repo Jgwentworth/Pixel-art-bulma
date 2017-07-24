@@ -28,6 +28,10 @@ def valid_email(resp):
     else:
         return False
 
+def strip_str(str):
+    new_str = "".join([i for i in str if not i.isdigit()])
+    return new_str
+
 @app.route("/logout")
 def logout():
     del session['username']
@@ -150,11 +154,32 @@ def search_page():
 @app.route("/post")
 def post_page():
     if request.method == "POST":
+
+        owner = User.query.filter_by(username=session['username']).first()
+
         species = request.form["species"]
         breed = request.form["breed"]
         color = request.form["color"]
         size = request.form["size"]
         name = request.form["name"]
+        
+        species = strip_str(species)
+        species = species.upper()
+
+        breed = strip_str(breed)
+        breed = breed.upper()
+
+        color = strip_str(color)
+        color = color.upper()
+
+        name = strip_str(name)
+        name = name.upper()
+
+        post_id = Post(species, breed ,color, size, name, owner)
+        db.session.add(post_id)
+        db.session.commit()
+
+        return redirect("/")
 
     return render_template("post.html")    
 
