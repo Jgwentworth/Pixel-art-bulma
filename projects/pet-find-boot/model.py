@@ -24,12 +24,16 @@ class Post(db.Model):
     color = db.Column(db.String(120))
     size = db.Column(db.String(120))
     name = db.Column(db.String(120))
+    city = db.Column(db.String(120))
+    state = db.Column(db.String(120))
     owner_id = db.Column(db.Integer, db.ForeignKey("user.id"))        
 
-    def __init__(self, species, breed, color, size, name, owner ):
+    def __init__(self, species, breed, color, size, name, city, state, owner ):
         self.species = species
         self.breed = breed
         self.color = color
         self.size = size
         self.name = name
+        self.city = city
+        self.state = state
         self.owner = owner

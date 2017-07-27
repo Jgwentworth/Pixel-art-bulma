@@ -32,6 +32,13 @@ def strip_str(str):
     new_str = "".join([i for i in str if not i.isdigit()])
     return new_str
 
+@app.before_request
+def require_login():
+    allowed_routes = ['home_page', 'sign_in', 'search_page', "sign_up"]
+    if request.endpoint not in allowed_routes and "username" not in session:
+        return redirect("/sign-up")
+
+
 @app.route("/logout")
 def logout():
     del session['username']
@@ -151,7 +158,7 @@ def sign_in():
 def search_page():
     return render_template("search.html")
 
-@app.route("/post")
+@app.route("/post", methods=["POST", "GET"])
 def post_page():
     if request.method == "POST":
 
@@ -162,6 +169,8 @@ def post_page():
         color = request.form["color"]
         size = request.form["size"]
         name = request.form["name"]
+        city = request.form["city"]
+        state = request.form["state"]
         
         species = strip_str(species)
         species = species.upper()
@@ -175,7 +184,10 @@ def post_page():
         name = strip_str(name)
         name = name.upper()
 
-        post_id = Post(species, breed ,color, size, name, owner)
+        city = strip_str(city)
+        city = city.upper()
+
+        post_id = Post(species, breed ,color, size, name, city, state, owner)
         db.session.add(post_id)
         db.session.commit()
 
