@@ -182,8 +182,7 @@ def search_page():
         city = strip_str(city)
         city = city.upper()
 
-        matches = Post.query.filter_by(state=state).filter_by(species=species).all()
-
+        matches = Post.query.filter_by(state=state)
         return render_template("matches.html", matches=matches)
 
 
