@@ -1,5 +1,6 @@
 from app import db
 from hashutils import make_pw_hash
+from flask_sqlalchemy import SQLAlchemy
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -8,7 +9,6 @@ class User(db.Model):
     email = db.Column(db.String(120))
     number = db.Column(db.String(12))
     posts = db.relationship("Post", backref="owner")
-    
 
     def __init__(self, username, password, email, number):
         self.username = username
@@ -25,7 +25,8 @@ class Post(db.Model):
     name = db.Column(db.String(120))
     city = db.Column(db.String(120))
     state = db.Column(db.String(120))
-    owner_id = db.Column(db.Integer, db.ForeignKey("user.id"))        
+    owner_id = db.Column(db.Integer, db.ForeignKey("user.id")) 
+    #TODO add datetime for posts       
 
     def __init__(self, species, breed, color, size, name, city, state, owner ):
         self.species = species

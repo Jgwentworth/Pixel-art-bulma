@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div id="post" class="container"> 
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="list-group">
+           {% for matches in matches %}
+       <a href="#" class="list-group-item list-group-item-action flex-column justify-content-start">
+       <div class="d-flex w-100 justify-content-start">
+       <h3 class="mb-1">{{matches.name}}</h5>
+       <div class="ml-auto p-2">
+        <small class="text-muted">{{matches.city}},{{matches.state}}</small>
+        </div>
+       </div>
+       <p class="mb-1">{{matches.color}}, {{matches.size}}</p>
+       <small class="text-muted">{{matches.owner.username}}</small>
+       </a>
+       <br>
+          {% endfor %}
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

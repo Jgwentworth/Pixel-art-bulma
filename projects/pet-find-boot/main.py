@@ -154,8 +154,39 @@ def sign_in():
                                    password=password
                                   )
 
-@app.route("/search")
+@app.route("/search", methods=["POST","GET"])
 def search_page():
+    if request.method == "POST":
+
+        #TODO fix the repeats. possible function called clean_form
+        species = request.form["species"]
+        breed = request.form["breed"]
+        color = request.form["color"]
+        size = request.form["size"]
+        name = request.form["name"]
+        city = request.form["city"]
+        state = request.form["state"]
+        
+        species = strip_str(species)
+        species = species.upper()
+
+        breed = strip_str(breed)
+        breed = breed.upper()
+
+        color = strip_str(color)
+        color = color.upper()
+
+        name = strip_str(name)
+        name = name.upper()
+
+        city = strip_str(city)
+        city = city.upper()
+
+        matches = Post.query.filter_by(state=state).filter_by(species=species).all()
+
+        return render_template("matches.html", matches=matches)
+
+
     return render_template("search.html")
 
 @app.route("/post", methods=["POST", "GET"])
