@@ -8,8 +8,12 @@
   <form class="post" action="post" method="POST">
     <div class="input-group">
       <span class="input-group-addon">Species</span>
-      <input type="text" class="form-control" name="species" placeholder="Dog" value="{{species_error}}">
-    </div>
+        <select class="form-control" id="species" name="species">
+          <option>Cat</option>
+          <option>Dog</option>
+          <option>Other</option>
+        </select>
+    </div>      
   <br>
     <div class="input-group">
       <span class="input-group-addon">Breed</span>
@@ -21,10 +25,18 @@
       <input type="text" class="form-control" name="color" placeholder="Black and tan" value="{{color_error}}">
     </div>
   <br>
-    <div class="input-group">
-      <span class="input-group-addon">Size</span>
-      <input  type="text" class="form-control" name="size" placeholder="100 lbs" value="{{size_error}}">
-    </div>
+    <div class="container">
+        <p>Size:</p>
+    <label class="radio-inline">
+      <input type="radio" name="optradio" value="small">Small (Dogs 0-25 lbs)
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio" value="medium">Medium (Dogs 26-50 lbs)
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="optradio" value="large">Large (Dogs 50+ lbs)
+    </label>
+</div>
   <br>
     <div class="input-group">
       <span class="input-group-addon">Name</span>
