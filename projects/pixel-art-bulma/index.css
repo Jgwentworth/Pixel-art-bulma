@@ -1,0 +1,10 @@
+
+.box{
+    width: 900px;
+    height: 600px;
+    overflow: hidden;
+}
+
+#column-is-narrow{
+    padding: 10px
+}
