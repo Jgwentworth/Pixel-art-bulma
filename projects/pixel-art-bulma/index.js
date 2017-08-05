@@ -15,7 +15,8 @@ function makeBox(){
 };
 
 let colorHold = "black";
-let mouseDown = false;
+let mouseDownCheck = false;
+let shiftKeyCheck = false;
 
 $(".color").change(function(){
     colorHold = this.value;
@@ -25,38 +26,42 @@ $(".color").change(function(){
  
 $(".grid").click(function(e){
     if (e.ctrlKey){
-    colorHold = $(this).css("background-color")
+        colorHold = $(this).css("background-color")
     } if (e.shiftKey) {
-    $(this).css({"background-color" : "",
-                 "outline": "1px solid gray"})     
+        $(this).css({"background-color" : "",
+                     "outline": "1px solid gray"})     
     } else {
-    $(this).css({"background-color": colorHold,
-                 "outline": colorHold});
+        $(this).css({"background-color": colorHold,
+                     "outline": colorHold});
     }
 })
-.mousedown(function(){
-    mouseDown = true;
-
+.mousedown(function(e){
+    mouseDownCheck = true;
+    if (e.shiftKey){
+        shiftKeyCheck = true;
+        console.log(shiftKeyCheck);
+    } else{
+      return  
+    }
 })
 .mouseup(function(){
-    mouseDown = false;
+    mouseDownCheck = false;
+    shiftKeyCheck = false;
 
 })
 .mouseenter(function(){
-    if (mouseDown == true){
-    $(this).css({"background-color": colorHold,
-                "outline": colorHold}); 
+    if (shiftKeyCheck == true){
+        $(this).css({"background-color" : "",
+                     "outline": "1px solid gray"})
+        return             
+    } else if (mouseDownCheck == true){
+        $(this).css({"background-color": colorHold,
+                     "outline": colorHold}); 
         return
     } else {
     return                         
     }          
 })
-.dblclick(function(){
-    colorHold = $(this).css('background-color');
-    console.log(colorHold)
-
-
-});
 
            
            
