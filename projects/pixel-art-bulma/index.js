@@ -5,7 +5,7 @@ function makeBox(){
         let $gridBox = $("<div></div>").css({"width": "10px", 
                 "height": "10px",
                 "outline": "1px solid gray",
-                "background-color": "white",
+                "background-color": "light gray",
                 "float": "left"});
         $gridBox.attr("id", i)
         $gridBox.attr("class", "grid")
@@ -23,9 +23,16 @@ $(".color").change(function(){
     return colorHold
 });
  
-$(".grid").click(function(){
-$(this).css({"background-color": colorHold,
-                "outline": colorHold});
+$(".grid").click(function(e){
+    if (e.ctrlKey){
+    colorHold = $(this).css("background-color")
+    } if (e.shiftKey) {
+    $(this).css({"background-color" : "",
+                 "outline": "1px solid gray"})     
+    } else {
+    $(this).css({"background-color": colorHold,
+                 "outline": colorHold});
+    }
 })
 .mousedown(function(){
     mouseDown = true;

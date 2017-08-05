@@ -5,6 +5,10 @@
     overflow: hidden;
 }
 
-#column-is-narrow{
-    padding: 10px
+.column-is-narrow{
+    padding: 10px;
+}
+
+.columns{
+    padding-top: 10px;
 }
