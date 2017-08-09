@@ -1,9 +1,9 @@
 
 .box{
-    width: 900px;
-    height: 600px;
+    width: 680px;
+    height: 680px;
     overflow: hidden;
-    background: gray;
+    background-color: gray;
 }
 
 .column-is-narrow{
@@ -12,4 +12,8 @@
 
 .columns{
     padding-top: 10px;
+}
+
+main{
+    background-color: 	#dcdcdc; 
 }
