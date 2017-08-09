@@ -95,7 +95,7 @@ $(".grid").click(function(e){
     if (e.ctrlKey){
         colorHold = $(this).css("background-color")
     } if (e.shiftKey) {
-        $(this).css({"background-color" : "",
+        $(this).css({"background-color" : "#ffffff",
                      "outline": "1px solid gray"}) ;                                        
     } if (e.altKey) {
         let $fillArea = $(this).css("background-color");
@@ -121,7 +121,7 @@ $(".grid").click(function(e){
 })
 .mouseenter(function(){
     if (shiftKeyCheck == true){
-        $(this).css({"background-color" : "",
+        $(this).css({"background-color" : "#ffffff",
                      "outline": "1px solid gray"})
         return             
     } else if (mouseDownCheck == true){
